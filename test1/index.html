@@ -5,23 +5,7 @@
 <body style='margin : 0px; overflow: hidden;'>
 <script>
   alert("Hello, World!");
-  let allow_clicks = false;
-document.querySelector("#scene")
-      .addEventListener('markerFound', (evt) => {
-               allow_clicks = true
-      })
-
-document.querySelector("#scene")
-      .addEventListener('markerLost', (evt) => {
-                allow_clicks = false
-      }) 
-
-document.querySelector("#press-here")
-      .addEventListener('click', (evt) => {
-           if (allow_clicks){
-               window.location="https://cybersift.io"
-           }            
-      }) 
+ 
     </script>  
   <a-scene id="scene" cursor="fuse: false; rayOrigin: mouse;" embedded arjs="debugUIEnabled: false; trackingMethod: best; sourceType: webcam; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
     <!-- create your content here. just a box for now -->
