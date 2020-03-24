@@ -11,17 +11,16 @@
     <a-scene background="color: #ccc">
       <a-assets>
         <a-asset-item id="planetas" src="planetas.glb"></a-asset-item>
-		<a-asset-item id="lasttoiletpaper" src="lasttoiletpaper.glb"></a-asset-item>
+		<!-- a-asset-item id="lasttoiletpaper" src="lasttoiletpaper.glb"></a-asset-item -->
       </a-assets>
 
       <!-- Use entity-generator component to generate 120 entities with the torusKnot mixin. -->
       <a-entity gltf-model="#planetas" position="1 1 1" scale="30 30 30"></a-entity>
 
-      <a-entity gltf-model="#lasttoiletpaper" position="25 25 26" scale="30 30 30"></a-entity>
+      <!-- a-entity gltf-model="#lasttoiletpaper" position="25 25 26" scale="30 30 30"></a-entity -->
 
       <a-entity movement-controls="fly: true" position="0 0 0">
         <a-entity camera position="0 1.6 0"></a-entity>
       </a-entity>
     </a-scene>
   </body>
-</html>
