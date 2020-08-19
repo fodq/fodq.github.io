@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html>
-  <script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
+<!-- script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script-->
   <!-- we import arjs version without NFT but with marker + location based support -->
-  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+  <!-- script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script -->
+  
+  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
   <script>
     window.onload = function() {
       document
@@ -59,13 +62,62 @@
       height:100%;
       
     }
+    
+    .arjs-loader {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.8);
+        z-index: 9999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .arjs-loader div {
+        text-align: center;
+        font-size: 1.25em;
+        color: white;
+      }
   </style>
   <body style="margin : 0px; overflow: hidden;">
     <div class="buttons">
       <button class="say-hi-button">SAY HI!</button>
     </div>
     <div class="content">oi</div>
-     <a-assets>
+    <div class="arjs-loader">
+      <div>Loading, please wait...</div>
+    </div>
+    
+    <a-scene
+      vr-mode-ui="enabled: false;"
+      renderer="logarithmicDepthBuffer: true;"
+      embedded
+      arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;">
+      <!-- a-nft is the anchor that defines an Image Tracking entity -->
+      <!-- on 'url' use the path to the Image Descriptors created before. -->
+      <!-- the path should end with the name without the extension e.g. if file is trex.fset' the path should end with trex -->
+      <a-nft
+        type="nft"
+        url="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/trex-image/trex"
+        smooth="true"
+        smoothCount="10"
+        smoothTolerance=".01"
+        smoothThreshold="5">
+          <!-- as a child of the a-nft entity, you can define the content to show. here's a GLTF model entity -->
+          <a-entity
+          gltf-model="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/scene.gltf"
+              scale="5 5 5"
+              position="100 100 0"
+          >
+          </a-entity>
+      </a-nft>
+      <!-- static camera that moves according to the device movemenents -->
+      <a-entity camera></a-entity>
+    </a-scene>
+     <!-- a-assets>
     <video id="fireball" autoplay loop="true" src="fireball.mp4"></video>
   </a-assets>
     <a-scene  cursor="rayOrigin: mouse; fuse: true; fuseTimeout: 0;"
@@ -73,12 +125,7 @@
       <a-marker-camera preset="hiro">
         
          <a-video src="#fireball" width="1.6" height="0.9" position="0 0 0"></a-video>
-        <!-- a-entity
-           
-          position="0 0 0"
-          scale="0.05 0.05 0.05"
-          gltf-model="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/scene.gltf"
-        ></a-entity -->
+       
 
         <a-box
         clickhandler
@@ -97,6 +144,6 @@
     >
     </a-box>
      
-    </a-scene>
+    </a-scene -->
   </body>
 </html>
